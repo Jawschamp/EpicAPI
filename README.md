@@ -12,3 +12,6 @@ Description oon what this does:
 * It will give you Item Shop Data
 * It will give you Free Games that Epic is giving away!
 * It gives you Live modes, (Only for NAW) for now
+Added Commit #3:
+Added the following Functions GetFNVersion, GetSACinfo
+Added some Third Parties partiaclly because my auth won't work.
