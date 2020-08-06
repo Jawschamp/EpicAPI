@@ -8,32 +8,18 @@ from base64 import b64encode
 #from Auth import authenticate
 r = requests.Session()
 
-
-class AuthTypes:
-    def Get_FN_Access_Token():
-        with open("Auth.json", "r") as f:
-            global FN_ACCESS_TOKEN
-            FN_ACCESS_TOKEN = json.load(f)["Token"]
-    #Get_FN_Access_Token()
-
-    
-    def Get_Auth_Client_ID():
-        Client_ID = "ec684b8c687f479fadea3cb2ad83f5c6:e1f31c211f28413186262d37a13fc84d"
-        headers = {"Content-Type": "application/x-www-form-urlencoded",
-                   "Authorization": f"basic {str(b64encode(Client_ID.encode('utf-8')), 'utf-8')}"}
-        print(headers)
-        
-        body = {"grant_type": "authorization_code",
-                "code": Client_ID}
-
-        cookies = {"XSRF-TOKEN": "016aa9abb2204da88f35f6ce6579e65c"}
-        GetClientID = r.post("https://www.epicgames.com/id/api/redirect?clientId=ec684b8c687f479fadea3cb2ad83f5c6&responseType=code", headers=headers, data=body)
-        global redirectUrl
-        redirectUrl = GetClientID.json()
-        print(redirectUrl)
-
+def Printinfo(Info):
+    print(Info)
 
 class URLs:
+    class ThirdParties:
+        class BenBot:
+            cosmetics = "https://benbotfn.tk/api/v1/cosmetics/br"
+            shop = "https://benbotfn.tk/api/v1/shop/br"
+
+        class Fortnite_API:
+            PlayerStats = "https://fortnite-api.com/v1/stats/br/v2"
+            SAC = "https://fortnite-api.com/v2/creatorcode?name="
     class EventService:
         BASE_URL_LIVE = "https://events-public-service-live.ol.epicgames.com/" #params gameID Fortnite, accountID, regionId, Platform Windows
     
@@ -42,17 +28,23 @@ class URLs:
         BASE_URL_PROD_ALT = "https://account-public-service-prod.ak.epicgames.com/account/" 
         BASE_URL_STAGE = "https://account-public-service-stage.ol.epicgames.com/account/"
 
+        MetaData = "https://account-public-service-prod03.ol.epicgames.com/account/api/accounts/:accountId/metadata"
+
     class CatalogService:
         BASE_URL_PROD = "https://catalog-public-service-prod06.ol.epicgames.com/catalog/"
         BASE_URL_PROD_ALT = "https://catalog-public-service-prod06.ak.epicgames.com/catalog/"
         BASE_URL_STAGE = "https://catalogv2-public-service-stage.ol.epicgames.com/catalog/"
+        class URLS:
+            Bulk_Items = "https://catalog-public-service-prod06.ol.epicgames.com/catalog/" + "api/shared/bulk/items"
     
     class ChannelService:
         BASE_URL_PROD = "https://channels-public-service-prod.ol.epicgames.com/"
         BASE_URL_STAGE = "https://channels-public-service-stage.ol.epicgames.com/"
 
     class FortniteService:
+        version = "https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/version"
         BASE_URL = "https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/"
+        In_Game_News = "https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game"
 
     class EpicGamesSite:
         redeem_code = "https://www.epicgames.com/account/v2/ajax/redemption/validate-redemption-code"
@@ -80,7 +72,33 @@ class URLs:
 def Get_Shop():
     Req = r.get("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/catalog")
 
+def Bulk_Items():
+    URL = r.get(URLs.CatalogService.URLS.Bulk_Items)
+    print(URL, URLs.CatalogService.URLS.Bulk_Items)
+Bulk_Items()
+
+def AccountMetaData():
+    print(URLs.AccountService.MetaData)
+
+
 class GetEpicData:
+    def Get_Shop():
+        GetShop = r.get(URLs.ThirdParties.BenBot.shop).json()["featured"]
+        for I in GetShop:
+            Names = I["entries"]["items"]
+            print(Names)
+
+    def GetSACinfo(Name):
+        SAC = r.get(URLs.ThirdParties.Fortnite_API.SAC + f"{Name}").json()["data"]
+        Code = SAC["code"]
+        account_name = SAC["account"]["name"]
+        print(Printinfo("SAC Code"), Code)
+
+    def GetFNVersion():
+        Version = r.get(URLs.FortniteService.version).json()
+        build = Version["build"]
+        print(build)
+
     def Get_News():
         Get_News = r.get(URLs.FortniteNews.News).json()["blogList"]
         for News_Feed in Get_News:
@@ -90,7 +108,13 @@ class GetEpicData:
             image = News_Feed["image"]
             banner = News_Feed["trendingImage"]
             description = News_Feed["shareDescription"]
-            print(title, author, description)
+            #content = News_Feed["content"]
+            #GetContent = content.strip("></")
+            print(title, author)
+
+    def GetIngameNews():
+        In_Game_News = r.get(URLs.FortniteService.In_Game_News).json()["battleroyalenews"]["news"]
+        print(In_Game_News)
 
     def Get_Free_Game_Info():
         FreeGames = r.get(URLs.EpicGamesStore.FreeGames).json()["data"]["Catalog"]["searchStore"]["elements"]
@@ -98,8 +122,7 @@ class GetEpicData:
             title = Info["title"]
             description = Info["description"]
             effectiveDate = Info["effectiveDate"]
-            print(title, description, effectiveDate)
- 
+        print(title, description, effectiveDate)
 
     def GetGameModes():
         with open("GameModes.json", "r") as e:
@@ -107,12 +130,24 @@ class GetEpicData:
             for GameModes in GetGameModes:
                 LiveModes = GameModes["state"]["region"]["NAW"]["eventFlagsForcedOn"][-1]
                 print(LiveModes)
-                
-GetEpicData.GetGameModes()
-GetEpicData.Get_News()
-GetEpicData.Get_Free_Game_Info()
+
+
+#GetEpicData.GetSACinfo(Name="VastBlast")
+#GetEpicData.GetFNVersion()
+#GetEpicData.Get_Shop()
+#GetEpicData.GetIngameNews()
+#GetEpicData.GetGameModes()
+#GetEpicData.Get_News()
+#GetEpicData.Get_Free_Game_Info()
 
 class Stats:
+    def GetPlayerStats(PlayerName):
+        GetPlayerStats = r.get(URLs.ThirdParties.Fortnite_API.PlayerStats + f"?name={PlayerName}").json()["data"]
+        AccountName = GetPlayerStats["account"]["name"]
+        BattlePassLevel = GetPlayerStats["battlePass"]["level"]
+        Stat = GetPlayerStats["stats"]["all"]
+        print(AccountName, BattlePassLevel)
+
     def Test(accountID):
         global IDKE
         IDKE = URLs.ChannelService.BASE_URL_PROD + f"api/v1/user/d4d0142cc75141ff841b1b41b40bed3a?type=all"
@@ -132,29 +167,20 @@ class Stats:
 
     def GetStatsForAccountID():
         URL = "https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/statsv2/account/"
-Stats.SearchByEmail(Email="fngqfn@gmail.com")
-Stats.SearchAccountIDByName(Name="Ninja")
-Stats.Test(accountID="d4d0142cc75141ff841b1b41b40bed3a")
-import Auth2
+
+#Stats.GetPlayerStats("Tfue")
+#Stats.SearchByEmail(Email="officialstaticbots@gmail.com")
+#Stats.SearchAccountIDByName(Name="Ninja")
+#Stats.Test(accountID="d4d0142cc75141ff841b1b41b40bed3a")
+#import Auth2
 
 def currencies():
     e = r.get(URLs.CatalogService.BASE_URL_PROD + "api/shared/bulk/offers", headers={"Authorization": FN_ACCESS_TOKEN})
     print("currencies() function: ", e)
-#currencies()
-
-
-def Send_Friend_Request_HTTP():
-    headers = {"Content-Type": "application/x-www-form-urlencoded",
-               "Authorization": FN_ACCESS_TOKEN}
-    Send_Friend_Request_To = r.post(URLs.Friends.Send_Friend_Request, headers=headers) #Friends take a FORTNITE_ACCESS_TOKEN
-    print(Send_Friend_Request_To.status_code)
-#Send_Friend_Request_HTTP()
-
 
 def Get_Amount_Of_Time_User_Has_Played():
     Time_Played = r.get(URLs.AccountStatus.Time_Played_On_Fortnite)
     print(Time_Played)
-
 
 def Redeem_Code(code):
     Try_Code = {"redeem-code": code}
