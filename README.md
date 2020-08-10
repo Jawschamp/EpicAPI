@@ -31,4 +31,5 @@ FortniteDATA.GetGameModes()
 FortniteDATA.GetSACinfo("Ninja") #Returns data for the inserted parameter
 FortniteDATA.GetFNVersion()
 
-Stats.GetPlayerStats("Ninja")```
+Stats.GetPlayerStats("Ninja")
+```
