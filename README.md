@@ -15,3 +15,20 @@ Description oon what this does:
 Added Commit #3:
 Added the following Functions GetFNVersion, GetSACinfo
 Added some Third Parties partiaclly because my auth won't work.
+
+Tested functions:
+```py
+from EpicTest import *
+
+
+GetEpicData.GET_WEBSITE_FN_NEWS()
+GetEpicData.Get_Free_Game_Info()
+
+FortniteDATA.Challenges.Get_Challenges("3") #Returns the challenges for week# e.g: 4
+
+FortniteDATA.Get_Ingame_News()
+FortniteDATA.GetGameModes()
+FortniteDATA.GetSACinfo("Ninja") #Returns data for the inserted parameter
+FortniteDATA.GetFNVersion()
+
+Stats.GetPlayerStats("Ninja")```
