@@ -19,6 +19,8 @@ Description oon what this does:
 
 Also thanks to This Nils#0001 You can use a replay parser,. :I’m still testing this but as a test do ReplayData.GetReplayData()
 Tested functions:
+![Python Command Line](https://media.discordapp.net/attachments/563518716810362890/743725925740445726/unknown.png)
+
 ```py
 from EpicTest import *
 from FortData import *
