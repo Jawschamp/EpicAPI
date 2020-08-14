@@ -4,7 +4,7 @@ import crayons
 
 
 from FortEndpoints import URLs
-APIKEY = "57f6c9c8-35e080e2-dee6c4bb-567dc7d4"
+APIKEY = ""
 
 r = requests.Session()
 
