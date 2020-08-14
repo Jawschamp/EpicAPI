@@ -10,7 +10,6 @@ The Problem:
     I can’t seem to figure out how Epic knows your logged in, I’m assuming it’s a cookie, but I don’t know witch one
 
 Description oon what this does:
-
     It will give you the news from the Website for Fortnite
     It will give you Free Games that Epic is giving away!
     It will give you SAC data for e.g ``FortniteDATA.GetSACinfo(Code="Tfue")`` #Returns the account name that the Code belongs too in this case: Tfue
