@@ -1,5 +1,6 @@
 # Latest edit:
 * I've made some files with appropriate names to clean all the code
+
 This is a shitty file i put together that does stupid things
 
 To run this, run EpicData.py
@@ -18,7 +19,7 @@ Description oon what this does:
 
 Also thanks to This Nils#0001 You can use a replay parser,. :I’m still testing this but as a test do ReplayData.GetReplayData()
 Tested functions:
-
+```py
 from EpicTest import *
 #GetEpicData.Get_News()
 
@@ -35,3 +36,4 @@ FortniteDATA.GetFNVersion()
 Stats.GetPlayerStats(PlayerName="Ninja")
 
 Redeem_Code(code="Jaws")
+```
