@@ -13,11 +13,11 @@ Description oon what this does:
 
     It will give you the news from the Website for Fortnite
     It will give you Free Games that Epic is giving away!
-    It will give you SAC data for e.g FortniteDATA.GetSACinfo(Code="Tfue") #Returns the account name that the Code belongs too in this case: Tfue
-    It will give you Challenge data with FortniteDATA.Challenges.Get_Challenges(Week="3")
+    It will give you SAC data for e.g ``FortniteDATA.GetSACinfo(Code="Tfue")`` #Returns the account name that the Code belongs too in this case: Tfue
+    It will give you Challenge data with ``FortniteDATA.Challenges.Get_Challenges(Week="3")``
     Added some Third Parties partially because my auth won’t work.
 
-Also thanks to This Nils#0001 You can use a replay parser,. :I’m still testing this but as a test do ReplayData.GetReplayData()
+Also thanks to This Nils#0001 You can use a replay parser,. :I’m still testing this but as a test do ``ReplayData.GetReplayData()``
 Tested functions:
 ![Python Command Line](https://media.discordapp.net/attachments/563518716810362890/743725925740445726/unknown.png)
 
