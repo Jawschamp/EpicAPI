@@ -1,4 +1,4 @@
-This was a trash app i made there are Alot of people i wanna thank, Terbau#8523, This Nils#0001 and of course Jaws#1100
+This was a trash app I made there are alot of people i wanna thank, Terbau#8523, This Nils#0001 and of course Jaws#1100
 This Nils#0001 - Replay Parser made in shitty Node
 This is just a test for now. - This Nils#0001
 Was Killer a Bot? False The Killer was {'id': '7e5ad7efdd5c4a7099290803c273c272', 'isBot': False}
@@ -21,6 +21,7 @@ God's Trigger God's Trigger 2020-08-20T15:00:00.000Z
 Week 3 Challenges Deal damage to opponents at Catty Corner
 This SAC Code belongs to
 343
+Devplaytest cln 14075129 Build 53
 Ninja 43
 200 {'redeem-code': 'Jaws'}
 The thread 'MainThread' (0x1) has exited with code 0 (0x0).
