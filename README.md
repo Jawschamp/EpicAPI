@@ -21,17 +21,18 @@ Also thanks to This Nils#0001 You can use a replay parser,. :I’m still testing
 Tested functions:
 ```py
 from EpicTest import *
-#GetEpicData.Get_News()
+from FortData import *
 
 ReplayData.GetReplayData()
 
 GetEpicData.GET_WEBSITE_FN_NEWS()
 GetEpicData.Get_Free_Game_Info()
 
+#Fort Data
 FortniteDATA.Challenges.Get_Challenges(Week="3") #Returns the challenges for week# e.g: 4
-FortniteDATA.Get_Ingame_News()
 FortniteDATA.GetSACinfo(Code="Tfue") #Returns data for the inserted parameter
 FortniteDATA.GetFNVersion()
+FortniteDATA.Dev.Devplaytest()
 
 Stats.GetPlayerStats(PlayerName="Ninja")
 
