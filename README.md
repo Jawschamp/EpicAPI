@@ -1,3 +1,5 @@
+# Latest edit:
+* I've made some files with appropriate names to clean all the code
 This is a shitty file i put together that does stupid things
 
 To run this, run EpicData.py
