@@ -4,7 +4,7 @@
 ##################### EDIT THESE ###############################
 # Replace these with your info
 credentials = []
-credentials.append(["officialstaticbots@gmail.com", "rezkyle987"]) # Example for account with 2FA
+credentials.append(["officialstaticbots@gmail.com", ""]) # Example for account with 2FA
 
 # You will want to replace the user-agent below for yours. Just Google 'what is my user agent' and copy that between the single quotes below
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0'
