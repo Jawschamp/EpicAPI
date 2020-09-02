@@ -1,5 +1,5 @@
 # Latest edit:
-* I've made some files with appropriate names to clean all the code
+* I've added ``FreeGames.py`` to get well... free games, quick note: (You need selenium, and it's configured to run on FireFox.exe I have no plans to add Chrome support but it's easy to fix with Google.com
 
 This is a shitty file i put together that does stupid things
 
