@@ -47,7 +47,7 @@ class URLs:
             backend_GraphQL = "https://www.epicgames.com/store/backend/graphql-proxy"
     
     class EpicGamesStore:
-        FreeGames = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions?locale=en-US&country=GB&allowCountries=GB,US"
+        FreeGames = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
     
     class FortniteEventFlag:
         calendar = "https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/calendar/v1/timeline"
